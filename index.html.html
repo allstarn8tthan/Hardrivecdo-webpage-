@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARDRIVE - Decals | Stickers | Signage | Printing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Ops+One&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff4d00;
+            --secondary: #1a1a1a;
+            --accent: #ffd700;
+            --dark: #0d0d0d;
+            --metal: #4a4a4a;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Graffiti Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,77,0,0.03) 50px, rgba(255,77,0,0.03) 51px),
+                repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255,77,0,0.03) 50px, rgba(255,77,0,0.03) 51px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px var(--primary));
+        }
+
+        .company-name {
+            font-family: 'Black Ops One', cursive;
+            font-size: 3rem;
+            color: var(--primary);
+            text-shadow: 3px 3px 0 #000, 0 0 20px var(--primary);
+            letter-spacing: 4px;
+        }
+
+        .motto {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.2rem;
+            color: var(--accent);
+            transform: rotate(-3deg);
+            display: inline-block;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23111" width="100" height="100"/><circle cx="50" cy="50" r="30" fill="none" stroke="%23222" stroke-width="2"/><circle cx="50" cy="50" r="20" fill="none" stroke="%23222" stroke-width="1"/></svg>');
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,77,0,0.05) 10px, rgba(255,77,0,0.05) 20px);
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero h1 {
+            font-family: 'Black Ops One', cursive;
+            font-size: 5rem;
+            color: var(--primary);
+            text-shadow: 4px 4px 0 #000, 0 0 30px var(--primary);
+            z-index: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            z-index: 1;
+        }
+
+        .hero .tagline {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2rem;
+            color: var(--accent);
+            z-index: 1;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 50px;
+            background: var(--secondary);
+        }
+
+        .section-title {
+            font-family: 'Black Ops One', cursive;
+            font-size: 3rem;
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 0 #000;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, #222, #1a1a1a);
+            padding: 40px 30px;
+            text-align: center;
+            border: 3px solid var(--metal);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(255,77,0,0.3);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 50px;
+            background: var(--dark);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-content {
+            max-width: 600px;
+        }
+
+        .about h2 {
+            font-family: 'Black Ops One', cursive;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Black Ops One', cursive;
+            font-size: 3rem;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 50px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background: #222;
+            padding: 30px 40px;
+            border: 2px solid var(--metal);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(255,77,0,0.3);
+        }
+
+        .contact-item h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-item p, .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 30px;
+            text-align: center;
+            border-top: 3px solid var(--primary);
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer .motto-footer {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Easter Egg - Secret Button */
+        .secret-trigger {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+
+        .secret-trigger:hover {
+            opacity: 1;
+        }
+
+        .secret-trigger::before {
+            content: '⚙️';
+            font-size: 24px;
+        }
+
+        /* Easter Egg Modal */
+        .easter-egg-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .easter-egg-modal.active {
+            display: flex;
+        }
+
+        .easter-egg-content {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+        }
+
+        .easter-egg-content h2 {
+            font-family: 'Black Ops One', cursive;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            animation: glitch 0.5s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+
+        .fun-fact {
+            background: #222;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid var(--accent);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .close-egg {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .close-egg:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        /* Hidden Fun Facts */
+        .hidden-facts {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .company-name {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            nav {
+                padding: 15px;
+                gap: 20px;
+            }
+            
+            nav a {
+                font-size: 1.2rem;
+            }
+            
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="image.png" alt="HARDRIVE Logo" class="logo-img" onerror="this.style.display='none'">
+            <div>
+                <h1 class="company-name">HARDRIVE</h1>
+                <span class="motto">"ONLY LEGEND KNOWS"</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#services">SERVICES</a>
+        <a href="#about">ABOUT</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>HARDRIVE</h1>
+        <p>Decals • Stickers • Signage • Printing</p>
+        <p class="tagline">"ONLY LEGEND KNOWS"</p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">OUR SERVICES</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>DECALS</h3>
+                <p>Custom decals for vehicles, walls, and any surface. Bold designs that last.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏷️</div>
+                <h3>STICKERS</h3>
+                <p>High-quality stickers in any shape and size. Perfect for branding and promotion.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🪧</div>
+                <h3>SIGNAGE</h3>
+                <p>Eye-catching signs for businesses, events, and personal use.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🖨️</div>
+                <h3>PRINTING</h3>
+                <p>Full-service printing for all your marketing and personal needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>ABOUT HARDRIVE</h2>
+            <p>Welcome to HARDRIVE – your premier destination for premium decals, stickers, signage, and printing services. Inspired by the raw energy of graffiti culture and the precision of mechanical engineering, we bring your vision to life with unmatched quality and style.</p>
+            <p>Whether you need to brand your vehicle, promote your business, or create custom designs, HARDRIVE delivers excellence every time.</p>
+            
+            <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Projects Done</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">CONTACT US</h2>
+        <p style="font-size: 1.2rem; color: #ccc;">Get in touch with HARDRIVE today!</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3>📱 PHONE</h3>
+                <a href="tel:09666606555">09666606555</a>
+            </div>
+            <div class="contact-item">
+                <h3>📧 EMAIL</h3>
+                <a href="mailto:hardrivecdo@gmail.com">hardrivecdo@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <h3>📘 FACEBOOK</h3>
+                <a href="https://facebook.com/HARDRIVECDO" target="_blank">HARDRIVE CDO</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 HARDRIVE. All Rights Reserved.</p>
+        <p class="motto-footer">"ONLY LEGEND KNOWS"</p>
+    </footer>
+
+    <!-- Secret Easter Egg Trigger -->
+    <button class="secret-trigger" onclick="showEasterEgg()" title="Something hidden here..."></button>
+
+    <!-- Easter Egg Modal -->
+    <div class="easter-egg-modal" id="easterEggModal">
+        <div class="easter-egg-content">
+            <h2>🎉 EASTER EGG FOUND!</h2>
+            <div class="fun-fact" id="funFact"></div>
+            <button class="close-egg" onclick="closeEasterEgg()">KEEP IT LEGENDARY</button>
+        </div>
+    </div>
+
+    <!-- Hidden Fun Facts Data -->
+    <div class="hidden-facts" id="funFactsData">
+        <div data-fact="Did you know? HARDRIVE started from a garage with just a single printer and a dream!"></div>
+        <div data-fact="Legend has it, our fastest sticker order was completed in just 2 hours for a surprised birthday party!"></div>
+        <div data-fact="The 'ONLY LEGEND KNOWS' motto came from our founder's late-night brainstorming session with energy drinks!"></div>
+        <div data-fact="We've printed over 50,000 decals that are probably still cruising around Cagayan de Oro!"></div>
+        <div data-fact="Fun fact: Our most unusual request was a full-vehicle decal for a pet parrot named 'Rocky'!"></div>
+        <div data-fact="The graffiti style you see on our site was actually designed by one of our own technicians!"></div>
+        <div data-fact="Legend says our workshop has a secret stash of the best coffee in town!"></div>
+    </div>
+
+    <script>
+        // Easter Egg System
+        let currentFactIndex = 0;
+        const facts = document.querySelectorAll('#funFactsData div');
+        
+        function showEasterEgg() {
+            const modal = document.getElementById('easterEggModal');
+            const factDisplay = document.getElementById('funFact');
+            
+            // Show random fun fact
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            factDisplay.textContent = facts[randomIndex].getAttribute('data-fact');
+            
+            modal.classList.add('active');
+            
+            // Add some cool effects
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEasterEgg() {
+            const modal = document.getElementById('easterEggModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeEasterEgg();
+            }
+        });
+
+        // Konami Code Easter Egg
+        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', function(e) {
+            if (e.code === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    showEasterEgg();
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        // Double-click on motto for secret
+        document.querySelectorAll('.motto').forEach(motto => {
+            motto.addEventListener('dblclick', showEasterEgg);
+        });
+
+        // Add some mechanical flair - gear rotation on scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const gears = document.querySelectorAll('.service-icon');
+            
+            gears.forEach((gear, index) => {
+                const rotation = scrolled * (index % 2 === 0 ? 1 : -1) * 0.1;
+                gear.style.transform = `rotate(${rotation}deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
